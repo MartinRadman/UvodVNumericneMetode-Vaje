@@ -11,9 +11,29 @@ p = @(x) k * x + n;
 K1 = [k^2 + 1, 2 * k * n, n^2 - 9];
 K2 = [k^2 + 1, 2 * k * n, n^2 - 16];
 
-kandidati2 = roots(K2)';
+kandidati = roots(K2)';
 
-for kandidat = kandidati2
+kandidati1 = roots(K1)';
+if isreal(kandidati1)
+    kandidat1 = kandidati1(1);
+    kandidat2 = kandidati1(2);
+    k1y = p(kandidat1);
+    k2y = p(kandidat2);
+    k1 = [kandidat1, k1y];
+    k2 = [kandidat2, k2y];
+    razdalja1 = norm(k1 - S);
+    razdalja2 = norm(k2 - S);
+    
+    if razdalja1 < razdalja2
+        tocka = k1;
+        kandidati = [tocka(1), kandidati];
+    else
+        tocka = k2;
+        kandidati = [tocka(1), kandidati];
+    end
+end
+
+for kandidat = kandidati
     if v(1) ~= 0
         if sign(kandidat - S(1)) == sign(v(1))
             tocka = [kandidat, p(kandidat)];
@@ -24,24 +44,6 @@ for kandidat = kandidati2
             tocka = [kandidat, p(kandidat)];
             break;
         end
-    end
-end
-
-kandidati1 = roots(K1)';
-if isreal(kandidati1)
-    kandidat1 = kandidati1(1);
-    kandidat2 = kandidati2(2);
-    k1y = p(kandidat1);
-    k2y = p(kandidat2);
-    k1 = [kandidat1, k1y];
-    k2 = [kandidat2, k2y];
-    razdalja1 = norm(k1 - S);
-    razdalja2 = norm(k2 - S);
-    
-    if razdalja1 < razdalja2
-        tocka = k1;
-    else
-        tocka = k2;
     end
 end
 
