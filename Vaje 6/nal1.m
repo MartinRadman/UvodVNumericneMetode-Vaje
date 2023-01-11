@@ -24,3 +24,6 @@ lambdab3 = 1/lambdab3 + 4.5;
 
 % naloga c
 E = housepot(A, 1e-3, 100);
+
+va = va / norm(va);
+V = housepot(A - lambdaa * (va * va'), 1e-3, 100);
