@@ -16,5 +16,8 @@ E(end) = A(1);
 
 % 2. del
 
-x0 = (1/2) * ones(4, 1);
-inverzna_potencna(A, x0, max(E), 1e-6, Inf);
+x0 = (1/2) * ones(n, 1);
+A = [4 -8 8 4; 2 6 -2 2; 2 -2 9 -2; 4 8 -4 0];
+v1 = inverzna_potencna(A, x0, max(E), 1e-6, Inf);
+v2 = inverzna_potencna(A, x0, min(E), 1e-6, Inf);
+vsota = norm(v1, 'inf') + norm(v2, 'inf');
