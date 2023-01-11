@@ -8,4 +8,4 @@ X = h * (1:100);
 
 Xkoord = [0 X]';
 Ykoord = [0 ys]';
-% plot(Xkoord,Ykoord,'o','MarkerFaceColor','k','MarkerEdgeColor','k');
+plot(Xkoord,Ykoord,'o','MarkerFaceColor','k','MarkerEdgeColor','k');
